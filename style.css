@@ -1,0 +1,40 @@
+#reset {
+  background-color: red;
+  color: white;
+}
+
+#erase {
+  background-color: white;
+  color: black;
+}
+
+#hoverBlack {
+  background-color: black;
+  color: white;
+}
+
+#hoverBlue {
+  background-color: blue;
+  color: white;
+}
+
+.buttonbar {
+  margin: 32px auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 32px;
+}
+
+button {
+  border-radius: 10px;
+  height: 32px;
+  min-width: 10%;
+  border: 1px solid black;
+  box-sizing: content-box;
+}
+/* 
+.childDiv:hover {
+  background-color: black;
+} */
