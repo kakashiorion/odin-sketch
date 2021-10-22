@@ -18,7 +18,9 @@ var hoverColor = "black";
 
 /**  Create a grid of 16x16 within parent div*/
 var defaultSize = 16;
+createGrid(defaultSize);
 
+/** function to create new grid */
 function createGrid(gridSize) {
   //Reset grid
   parentDiv.innerHTML = "";
@@ -40,57 +42,44 @@ function createGrid(gridSize) {
   });
 }
 
-createGrid(defaultSize);
+/** Color palette */
+var colorPicker = document.getElementById("colorPicker");
+colorPicker.addEventListener("change", () => {
+  changeHoverColor(colorPicker.value);
+});
 
-// var childDivArray = Array.from(document.querySelectorAll(".childDiv"));
-
-// childDivArray.forEach((item) => {
-//   item.addEventListener("mouseover", function () {
-//     item.style.backgroundColor = hoverColor;
-//   });
-// });
-
-/** change hover color */
+/** function to change hover color */
 function changeHoverColor(color) {
   hoverColor = color;
+  colorPicker.value = color;
 }
 
-/** change grid size */
+/** function to change grid size */
 function changeSize(newSize) {
   createGrid(newSize);
 }
 
+/** Hover with blue ink */
 var changeBlueButton = document.getElementById("hoverBlue");
 changeBlueButton.addEventListener("click", () => {
-  changeHoverColor("blue");
+  changeHoverColor("#0000ff");
 });
 
+/** Hover with black ink */
 var changeBlackButton = document.getElementById("hoverBlack");
 changeBlackButton.addEventListener("click", () => {
-  changeHoverColor("black");
+  changeHoverColor("#000000");
 });
 
+/** Hover with random color ink */
 var changeRGB = document.getElementById("RGB");
 changeRGB.addEventListener("click", () => {
-  changeHoverColor(getRandomColor());
+  var randomColor = getRandomColor();
+  changeHoverColor(randomColor);
+  changeRGB.style.backgroundColor = randomColor;
 });
 
-/** Reset grid and change its size */
-var resetButton = document.getElementById("reset");
-resetButton.addEventListener("click", function () {
-  Array.from(document.querySelectorAll(".childDiv")).forEach((item) => {
-    item.style.backgroundColor = "white";
-  });
-  var newSize = prompt("Change the grid size", "16");
-  changeSize(newSize);
-});
-
-/** Start erasing with hover color as white*/
-var eraseButton = document.getElementById("erase");
-eraseButton.addEventListener("click", () => {
-  changeHoverColor("white");
-});
-
+/** function to generate random color */
 function getRandomColor() {
   var code = "0123456789abcdef";
   var color = "#";
@@ -99,3 +88,20 @@ function getRandomColor() {
   }
   return color;
 }
+
+/** Start erasing with white color*/
+var eraseButton = document.getElementById("erase");
+eraseButton.addEventListener("click", () => {
+  changeHoverColor("#ffffff");
+});
+
+/** Reset grid and change its size */
+var resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", function () {
+  var newSize = prompt("Change the grid size", "16");
+  changeSize(newSize);
+  Array.from(document.querySelectorAll(".childDiv")).forEach((item) => {
+    item.style.backgroundColor = "#ffffff";
+  });
+  colorPicker.value = "#000000";
+});

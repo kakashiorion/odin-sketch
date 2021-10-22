@@ -18,6 +18,14 @@
   color: white;
 }
 
+#colorPalette {
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
 .buttonbar {
   margin: 32px auto;
   width: 100%;
