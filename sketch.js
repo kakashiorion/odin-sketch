@@ -4,6 +4,7 @@ parentDiv.className = "parentDiv";
 parentDiv.id = "parentDiv";
 parentDiv.style.border = "4px solid black";
 parentDiv.style.width = "50%";
+parentDiv.style.maxHeight = "75%";
 parentDiv.style.aspectRatio = 1;
 parentDiv.style.display = "grid";
 parentDiv.style.whiteSpace = "nowrap";
